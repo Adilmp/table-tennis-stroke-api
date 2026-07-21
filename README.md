@@ -107,3 +107,14 @@ Export: Available on Hugging Face Hub for reproducible inference
 [ ] Pose estimation integration (MediaPipe)
 📝 License
 MIT
+
+
+---
+
+## ⚠️ Known Limitations
+
+- **Camera angle sensitivity:** The model was trained on fixed-angle match footage and may generalize poorly to significantly different viewpoints (e.g., overhead, behind-the-player).
+- **Single-player focus:** Optimized for professional match settings; casual play with irregular strokes may yield lower confidence.
+- **Inference speed:** CPU inference takes ~1–2s per video; GPU recommended for real-time use.
+
+These are active areas for improvement — see [Roadmap](#-roadmap).
