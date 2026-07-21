@@ -14,12 +14,12 @@ device = 0 if torch.cuda.is_available() else -1
 
 # Load image processor explicitly
 image_processor = VideoMAEImageProcessor.from_pretrained(
-    "Ham1mad1/videomae-base-Vsl-Lab-PC-V10"
+    "Adilmp/table-tennis-videomae"
 )
 
 classifier = pipeline(
     "video-classification",
-    model="Ham1mad1/videomae-base-Vsl-Lab-PC-V10",
+    model="Adilmp/table-tennis-videomae",
     image_processor=image_processor,
     device=device
 )
