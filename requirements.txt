@@ -1,3 +1,5 @@
+# torch's +cpu wheels live on PyTorch's own index, not PyPI
+--extra-index-url https://download.pytorch.org/whl/cpu
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.14.2

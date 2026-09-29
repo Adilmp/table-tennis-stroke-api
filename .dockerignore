@@ -1,9 +1,11 @@
 venv/
+.git/
 __pycache__/
 *.pyc
+*.onnx
+*.onnx.data
 *.mp4
 *.avi
 *.mov
-.ipynb_checkpoints/
-*.onnx
-*.onnx.data
+notebooks/
+tests/

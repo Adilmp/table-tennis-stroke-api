@@ -1,6 +1,3 @@
-import sys
-print("Python:", sys.executable)
-
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from transformers import pipeline, VideoMAEImageProcessor
 import torch
@@ -24,13 +21,15 @@ classifier = pipeline(
     device=device
 )
 
+# A plain def (not async): FastAPI runs it in a worker thread, so a slow prediction
+# doesn't block other requests the way a synchronous model call inside async def would.
 @app.post("/predict")
-async def predict(video: UploadFile = File(...)):
-    if not video.filename.endswith(('.mp4', '.avi', '.mov')):
+def predict(video: UploadFile = File(...)):
+    if not video.filename.lower().endswith(('.mp4', '.avi', '.mov')):
         raise HTTPException(400, "Only video files allowed")
     
     with tempfile.NamedTemporaryFile(delete=False, suffix=".mp4") as tmp:
-        tmp.write(await video.read())
+        tmp.write(video.file.read())
         tmp_path = tmp.name
     
     try:
